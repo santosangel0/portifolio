@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Angelo dos Santos | AI Engineer &amp; Estatística</title>
+    <meta name="description" content="Portfólio de Angelo dos Santos Luna Filho — Estudante de Estatística na UFJF, experiência na Embrapa Gado de Leite, IA, NLP, Python, R, SQL, Google Earth Engine e Docker."/>
+    <script src="parallax-geometry/assets/gsap_4a57399e4113.js"></script>
+    <script src="parallax-geometry/assets/ScrollTrigger_8669edfeb171.js"></script>
+    <script src="parallax-geometry/assets/resource_3fa48481346f.js"></script>
+    <link href="parallax-geometry/assets/css2_5f62d382f7c0.css" rel="stylesheet"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 5.5rem;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        #canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.58;
+            pointer-events: none;
+        }
+
+        main {
+            text-shadow: 0 2px 18px rgba(10, 10, 10, 0.95);
+        }
+
+        /* Design System Nav */
+        .ds-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.82);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 1.5rem;
+        }
+        @media (min-width: 768px) {
+            .ds-nav {
+                padding: 1rem 2rem;
+            }
+        }
+        .ds-nav a {
+            color: rgba(255, 255, 255, 0.65);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .ds-nav a:hover {
+            color: #ffffff;
+        }
+
+        /* Design System Section */
+        .ds-section {
+            position: relative;
+            z-index: 10;
+            padding: 5.5rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .ds-section {
+                padding: 6.5rem 2rem;
+            }
+        }
+
+        .ds-quote-band {
+            position: relative;
+            z-index: 10;
+            min-height: 18rem;
+            padding: 4.5rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .ds-card {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem;
+            background: rgba(18, 18, 20, 0.72);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: border-color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+        }
+        .ds-card:hover {
+            border-color: rgba(96, 165, 250, 0.45);
+            background: rgba(24, 24, 27, 0.84);
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white antialiased">
+    <canvas id="canvas" aria-hidden="true"></canvas>
+
+    <!-- Navigation -->
+    <nav class="ds-nav">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <a href="#hero" class="!text-white font-bold tracking-tight flex items-center shrink-0">
+                <span>Angelo dos Santos</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#hero">Perfil</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#experiencia">Experiência</a>
+                <a href="#producao">Produção</a>
+                <a href="#competencias">Competências</a>
+                <a href="#contato">Contato</a>
+            </div>
+
+            <button id="menu-toggle" type="button" class="md:hidden font-mono text-xs uppercase tracking-wider text-zinc-300 border border-white/15 rounded-md px-3 py-1.5" aria-expanded="false" aria-controls="mobile-menu">
+                Menu
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2 mt-4 border-t border-white/10 flex-col gap-3">
+            <a href="#hero" class="mobile-nav-link block py-1">Perfil</a>
+            <a href="#projetos" class="mobile-nav-link block py-1">01. Projetos em Destaque</a>
+            <a href="#experiencia" class="mobile-nav-link block py-1">02. Experiência &amp; Formação</a>
+            <a href="#producao" class="mobile-nav-link block py-1">03. Produção Técnica</a>
+            <a href="#competencias" class="mobile-nav-link block py-1">04. Competências &amp; Idiomas</a>
+            <a href="#contato" class="mobile-nav-link block py-1">05. Contato</a>
+        </div>
+    </nav>
+
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center px-6 md:px-8 pt-24 pb-16 border-b border-white/5">
+            <div class="max-w-7xl w-full">
+                <div class="font-mono text-xs sm:text-sm text-zinc-400 mb-6 flex flex-wrap items-center gap-x-4 gap-y-2 hero-meta">
+                    <span class="text-blue-400">00. PERFIL PROFISSIONAL</span>
+                    <span class="text-zinc-600">/</span>
+                    <span>ESTATÍSTICA · UFJF (2024–2028)</span>
+                    <span class="text-zinc-600">/</span>
+                    <span>JUIZ DE FORA, MG</span>
+                </div>
+
+                <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold leading-tight mb-8 md:mb-10 text-white tracking-tight hero-title">
+                    Angelo<br/>dos Santos
+                </h1>
+
+                <p class="text-lg sm:text-2xl md:text-3xl leading-relaxed max-w-4xl text-zinc-300 font-medium hero-desc">
+                    Estudante de Estatística na UFJF (previsão de formatura em 2028) com 1 ano de experiência na <span class="text-white">Embrapa Gado de Leite</span> em pipelines de ETL, consumo de APIs, limpeza de dados e modelagem estatística com <span class="text-white">Python, R e SQL</span>.
+                </p>
+
+                <p class="text-base sm:text-lg md:text-xl leading-relaxed max-w-3xl text-zinc-400 mt-6 hero-sub">
+                    Com o auxílio do <span class="text-zinc-200">Gemini</span> e do <span class="text-zinc-200">Antigravity CLI</span>, aprendi rapidamente a manipular dados espaciais no <span class="text-zinc-200">Google Earth Engine</span> e a subir imagens <span class="text-zinc-200">Docker</span> em servidor <span class="text-zinc-200">Linux</span>. Busco atuar como <span class="text-blue-400 font-medium">AI Engineer</span>, aplicando base estatística, modelos de classificação e Processamento de Linguagem Natural (<span class="text-zinc-200">NLP</span>).
+                </p>
+
+                <div class="mt-10 flex flex-wrap items-center gap-4 hero-actions">
+                    <a href="#projetos" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white text-zinc-950 font-semibold text-sm hover:bg-zinc-200 transition-colors">
+                        Ver Projetos em Destaque ↓
+                    </a>
+                    <a href="https://github.com/santosangel0" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-white/15 bg-white/5 text-zinc-200 text-sm font-medium hover:border-blue-400/60 hover:text-white transition-colors">
+                        GitHub ↗
+                    </a>
+                    <a href="https://www.linkedin.com/in/angelo--santos" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-white/15 bg-white/5 text-zinc-200 text-sm font-medium hover:border-blue-400/60 hover:text-white transition-colors">
+                        LinkedIn ↗
+                    </a>
+                    <a href="mailto:angelo.dslf@gmail.com" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-white/10 text-zinc-400 text-sm font-mono hover:text-white hover:border-white/30 transition-colors">
+                        angelo.dslf@gmail.com
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interstitial Quote 1 -->
+        <div class="ds-quote-band">
+            <p class="text-2xl sm:text-3xl md:text-4xl text-center max-w-5xl text-zinc-400 italic font-medium gsap-reveal">
+                "Da inferência estatística ao Processamento de Linguagem Natural: modelos construídos com rigor quantitativo e foco em aplicação real."
+            </p>
+        </div>
+
+        <!-- 01. Projetos em Destaque -->
+        <section id="projetos" class="ds-section">
+            <div class="mb-12 gsap-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white/50">01. Projetos em Destaque</h2>
+                <h3 class="text-4xl sm:text-6xl md:text-7xl font-bold leading-tight text-white tracking-tight">
+                    IA, NLP &amp;<br/>Geodados
+                </h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Projeto 01: CAED -->
+                <article class="ds-card p-8 md:p-10 flex flex-col justify-between gsap-reveal">
+                    <div>
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+                            <span class="font-mono text-xs sm:text-sm text-blue-400">PROJETO 01 · PROCESSO SELETIVO — CAED</span>
+                            <span class="font-mono text-xs text-zinc-500">IA &amp; NLP</span>
+                        </div>
+
+                        <h4 class="text-2xl md:text-3xl font-bold text-white leading-snug mb-6">
+                            Classificação e Adaptação de Textos Escolares para Provas
+                        </h4>
+
+                        <div class="space-y-4 text-zinc-300 leading-relaxed text-base md:text-lg">
+                            <p>
+                                Projeto teórico voltado a auxiliar professores na modificação leve de textos escolares para aplicação em provas, economizando tempo de preparação sem alterar o nível de dificuldade original do texto.
+                            </p>
+                            <p>
+                                Processamento de linguagem natural com <span class="text-white font-medium">spaCy</span> e <span class="text-white font-medium">NLTK</span> e treinamento comparativo de 3 modelos de classificação (<span class="text-white font-medium">LightGBM</span>, <span class="text-white font-medium">Random Forest</span> e <span class="text-white font-medium">Regressão Logística</span>) para classificar o nível do texto antes e após as modificações.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mt-8">
+                            <span class="font-mono text-xs px-3 py-1 rounded-md border border-white/10 bg-white/5 text-zinc-300">spaCy</span>
+                            <span class="font-mono text-xs px-3 py-1 rounded-md border border-white/10 bg-white/5 text-zinc-300">NLTK</span>
+                            <span class="font-mono text-xs px-3 py-1 rounded-md border border-white/10 bg-white/5 text-zinc-300">LightGBM</span>
+                            <span class="font-mono text-xs px-3 py-1 rounded-md border border-white/10 bg-white/5 text-zinc-300">Random Forest</span>
+                            <span class="font-mono text-xs px-3 py-1 rounded-md border border-white/10 bg-white/5 text-zinc-300">Regressão Logística</span>
+                            <span class="font-mono text-xs px-3 py-1 rounded-md border border-blue-400/30 bg-blue-400/10 text-blue-300">Streamlit</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+                        <span class="font-mono text-xs text-zinc-500">3 modelos comparados · pré/pós adaptação</span>
+                        <a href="https://alfa-gen-mf7ewkugsz6zvada5trhqw.streamlit.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-blue-400 transition-colors">
+                            Acessar Aplicação no Streamlit ↗
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Projeto 02: EMBRAPA -->
+                <article class="ds-card p-8 md:p-10 flex flex-col justify-between gsap-reveal">
+                    <div>
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+                            <span class="font-mono text-xs sm:text-sm text-amber-400">PROJETO 02 · EMBRAPA GADO DE LEITE</span>
+                            <span class="font-mono text-xs text-zinc-500">ETL &amp; GEODADOS</span>
+                        </div>
+
+                        <h4 class="text-2xl md:text-3xl font-bold text-white leading-snug mb-6">
+                            Clima, Pastagem e Produtividade Leiteira em Goiás (2008–2023)
+                        </h4>
+
+                        <div class="space-y-4 text-zinc-300 leading-relaxed text-base md:text-lg">
+                            <p>
+                                Construção de pipelines de ETL em <span class="text-white font-medium">Python</span> (Polars, DuckDB, NumPy, PyArrow) consumindo a <span class="text-white font-medium">API interna do INMET</span> e <span class="text-white font-medium">APIs públicas do IBGE</span>, integrando dados climáticos e espaciais em um painel de <span class="text-white font-medium">3.936 observações</span> com NASA POWER e MODIS/MapBiomas via <span class="text-white font-medium">Google Earth Engine</span>.
+                            </p>
+                            <p>
+                                Modelagem estatística e econométrica em <span class="text-white font-medium">R</span> (regressão de painel com efeitos fixos via pacote <em>fixest</em>, testes de robustez, análise de mediação causal e bootstrap por município), incluindo aplicação prática e zoneamento por mesorregiões.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mt-8">
+                            <span class="font-mono text-xs px-3 py-1 rounded-md border border-white/10 bg-white/5 text-zinc-300">Python</span>
+                            <span class="font-mono text-xs px-3 py-1 rounded-md border border-white/10 bg-white/5 text-zinc-300">Polars · DuckDB</span>
+                            <span class="font-mono text-xs px-3 py-1 rounded-md border border-white/10 bg-white/5 text-zinc-300">Google Earth Engine</span>
+                            <span class="font-mono text-xs px-3 py-1 rounded-md border border-white/10 bg-white/5 text-zinc-300">R (fixest)</span>
+                            <span class="font-mono text-xs px-3 py-1 rounded-md border border-white/10 bg-white/5 text-zinc-300">INMET · IBGE</span>
+                            <span class="font-mono text-xs px-3 py-1 rounded-md border border-amber-400/30 bg-amber-400/10 text-amber-300">Quarto · GitHub Pages</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+                        <span class="font-mono text-xs text-zinc-500">3.936 observações · zoneamento mesorregional</span>
+                        <a href="https://santosangel0.github.io/dairy-pasture-geodata/#aplica%C3%A7%C3%A3o-pr%C3%A1tica-e-zoneamento-por-mesorregi%C3%B5es" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-amber-400 transition-colors">
+                            Acessar Estudo &amp; Zoneamento ↗
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Interstitial Quote 2 -->
+        <div class="ds-quote-band">
+            <p class="text-2xl sm:text-3xl md:text-4xl text-center max-w-5xl text-zinc-400 italic font-medium gsap-reveal">
+                "Com o auxílio do Gemini e do Antigravity CLI, aprendi rapidamente a manipular dados espaciais no Google Earth Engine e a subir imagens Docker em servidor Linux."
+            </p>
+        </div>
+
+        <!-- 02. Experiência Profissional & Formação Acadêmica -->
+        <section id="experiencia" class="ds-section">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-white/50 gsap-reveal">02. Experiência &amp; Formação</h2>
+
+            <div class="space-y-16">
+                <!-- Experiência Profissional -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 items-start pb-12 border-b border-white/5 gsap-reveal">
+                    <div>
+                        <div class="text-zinc-500 font-mono text-sm">Experiência Profissional</div>
+                        <h3 class="text-2xl font-bold text-white mt-3">Embrapa Gado de Leite</h3>
+                        <p class="text-zinc-300 mt-1">Bolsista de Iniciação Científica (PIBIC/CNPq)</p>
+                        <p class="font-mono text-xs text-blue-400 mt-3">Juiz de Fora, MG · 1 ano de atuação</p>
+                    </div>
+
+                    <div class="md:col-span-3 space-y-6">
+                        <div class="ds-card p-6">
+                            <div class="font-mono text-xs text-zinc-500 mb-2">01 · PIPELINES DE ETL &amp; APIs</div>
+                            <p class="text-zinc-300 text-base md:text-lg leading-relaxed">
+                                Construção de pipelines de ETL em <span class="text-white font-medium">Python</span> (Polars, DuckDB, NumPy, PyArrow) consumindo a <span class="text-white font-medium">API interna do INMET</span> e <span class="text-white font-medium">APIs públicas do IBGE</span>, integrando dados climáticos e espaciais (painel de 3.936 observações com NASA POWER e MODIS/MapBiomas).
+                            </p>
+                        </div>
+
+                        <div class="ds-card p-6">
+                            <div class="font-mono text-xs text-zinc-500 mb-2">02 · DADOS ESPACIAIS &amp; FLUXO ASSISTIDO POR IA</div>
+                            <p class="text-zinc-300 text-base md:text-lg leading-relaxed">
+                                Aprendizado rápido, com suporte do <span class="text-white font-medium">Gemini</span> e <span class="text-white font-medium">Antigravity CLI</span>, para manipular dados espaciais no <span class="text-white font-medium">Google Earth Engine (GEE)</span> e cruzá-los com séries meteorológicas e produtivas.
+                            </p>
+                        </div>
+
+                        <div class="ds-card p-6">
+                            <div class="font-mono text-xs text-zinc-500 mb-2">03 · MODELAGEM ESTATÍSTICA &amp; ECONOMETRIA</div>
+                            <p class="text-zinc-300 text-base md:text-lg leading-relaxed">
+                                Modelagem estatística e econométrica em <span class="text-white font-medium">R</span> (regressão de painel com efeitos fixos via pacote <em>fixest</em>, testes de robustez, análise de mediação causal e bootstrap por município).
+                            </p>
+                        </div>
+
+                        <div class="ds-card p-6">
+                            <div class="font-mono text-xs text-zinc-500 mb-2">04 · CONTAINERS, VERSIONAMENTO &amp; DOCUMENTAÇÃO</div>
+                            <p class="text-zinc-300 text-base md:text-lg leading-relaxed">
+                                Subida de imagens <span class="text-white font-medium">Docker</span> em servidor <span class="text-white font-medium">Linux</span> (aprendida rapidamente com ajuda do <span class="text-white font-medium">Gemini</span> e <span class="text-white font-medium">Antigravity CLI</span>), versionamento com <span class="text-white font-medium">Git/GitHub</span> e documentação com Quarto e R Markdown.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formação Acadêmica -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 items-start gsap-reveal">
+                    <div>
+                        <div class="text-zinc-500 font-mono text-sm">Formação Acadêmica</div>
+                        <p class="font-mono text-xs text-amber-400 mt-3">2024 – Presente</p>
+                        <p class="font-mono text-xs text-zinc-500 mt-1">Previsão de conclusão: 2028</p>
+                    </div>
+                    <div class="md:col-span-3">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white">Bacharelado em Estatística</h3>
+                        <p class="text-lg md:text-xl text-zinc-300 mt-2">
+                            Universidade Federal de Juiz de Fora (UFJF) — Instituto de Ciências Exatas (ICE)
+                        </p>
+                        <p class="mt-4 text-zinc-400 leading-relaxed max-w-3xl">
+                            Base matemática e estatística voltada a probabilidade, inferência, modelos de regressão e classificação, análise exploratória e preparação de bases para aplicações de Machine Learning e Inteligência Artificial.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. Produção Técnica -->
+        <section id="producao" class="ds-section">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-white/50 gsap-reveal">03. Produção Técnica</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 items-start gsap-reveal">
+                <div>
+                    <div class="text-zinc-500 font-mono text-sm">Artigo em Evento Científico / Relatório Técnico</div>
+                    <p class="font-mono text-xs text-blue-400 mt-3">Embrapa Gado de Leite · 2026</p>
+                </div>
+                <div class="md:col-span-3 ds-card p-8 md:p-10">
+                    <blockquote class="text-2xl md:text-3xl text-zinc-200 italic font-medium leading-snug">
+                        "Atribuição dos Efeitos do Clima sobre a Produtividade Leiteira em Goiás (2008–2023): Estresse Térmico, Chuva e o Papel Mediador da Pastagem"
+                    </blockquote>
+                    <p class="mt-6 text-zinc-400 text-base md:text-lg">
+                        <span class="text-white font-medium">Angelo dos Santos Luna Filho</span>, Ricardo Guimarães Andrade. Embrapa Gado de Leite (2026).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04. Competências Técnicas & Idiomas -->
+        <section id="competencias" class="ds-section">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-white/50 gsap-reveal">04. Competências Técnicas &amp; Idiomas</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="ds-card p-8 gsap-reveal">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-blue-400">01 / IA, ML &amp; NLP</span>
+                        <span class="w-3 h-3 rounded-full bg-blue-400/80"></span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">IA, Machine Learning e NLP</h3>
+                    <p class="text-zinc-300 leading-relaxed">
+                        spaCy, NLTK, LightGBM, Random Forest, Regressão Logística, fluxo assistido por IA (Gemini, Antigravity CLI).
+                    </p>
+                </div>
+
+                <div class="ds-card p-8 gsap-reveal">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-white">02 / DADOS &amp; APIs</span>
+                        <span class="w-3 h-3 rounded-full bg-white/80"></span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Linguagens, Dados e APIs</h3>
+                    <p class="text-zinc-300 leading-relaxed">
+                        Python (Polars, Pandas, NumPy, PyArrow), R, SQL, DuckDB, integração de APIs (INMET, IBGE).
+                    </p>
+                </div>
+
+                <div class="ds-card p-8 gsap-reveal">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-amber-400">03 / GEODADOS &amp; INFRA</span>
+                        <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Dados Espaciais e Infraestrutura</h3>
+                    <p class="text-zinc-300 leading-relaxed">
+                        Google Earth Engine (GEE), Docker (subida de imagens em servidor Linux), Linux/Bash, Git, GitHub, Quarto, R Markdown.
+                    </p>
+                </div>
+
+                <div class="ds-card p-8 gsap-reveal">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs text-zinc-400">04 / ESTATÍSTICA</span>
+                        <span class="w-3 h-3 rounded-full bg-zinc-400/80"></span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Estatística</h3>
+                    <p class="text-zinc-300 leading-relaxed">
+                        Limpeza e preparação de bases, modelos de regressão e classificação, análise exploratória, probabilidade e inferência.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-8 ds-card p-8 gsap-reveal">
+                <div>
+                    <div class="font-mono text-xs text-zinc-500 mb-2">05 / IDIOMAS</div>
+                    <h3 class="text-xl font-bold text-white">Inglês Intermediário</h3>
+                    <p class="text-zinc-300 mt-1">Boa compreensão em leitura e escuta; conversação funcional.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05. Contato -->
+        <section id="contato" class="ds-section min-h-[85vh] flex flex-col justify-center border-b-0">
+            <div class="max-w-5xl gsap-reveal">
+                <p class="font-mono text-xs sm:text-sm text-blue-400 mb-6">
+                    05. CONTATO · ABERTO A OPORTUNIDADES COMO AI ENGINEER
+                </p>
+                <h2 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold leading-tight mb-10 text-white tracking-tight">
+                    Vamos<br/>Conversar
+                </h2>
+                <p class="text-xl md:text-2xl leading-relaxed text-zinc-300 font-medium max-w-3xl">
+                    Interessado em projetos e oportunidades aplicando Estatística, Processamento de Linguagem Natural (NLP), pipelines de dados e Inteligência Artificial.
+                </p>
+
+                <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
+                    <a href="mailto:angelo.dslf@gmail.com" class="ds-card p-5 block">
+                        <div class="font-mono text-xs text-zinc-500 mb-1">E-mail</div>
+                        <div class="text-white font-medium text-sm sm:text-base break-all">angelo.dslf@gmail.com</div>
+                    </a>
+                    <div class="ds-card p-5">
+                        <div class="font-mono text-xs text-zinc-500 mb-1">Localização</div>
+                        <div class="text-white font-medium text-sm sm:text-base">Juiz de Fora, MG</div>
+                    </div>
+                </div>
+
+                <div class="mt-10 flex flex-wrap gap-6 text-sm font-mono">
+                    <a href="https://github.com/santosangel0" target="_blank" rel="noopener noreferrer" class="text-zinc-300 hover:text-white transition-colors">github.com/santosangel0 ↗</a>
+                    <a href="https://www.linkedin.com/in/angelo--santos" target="_blank" rel="noopener noreferrer" class="text-zinc-300 hover:text-white transition-colors">linkedin.com/in/angelo--santos ↗</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mobile Menu Script + GSAP Animations -->
+    <script>
+        (function initNavAndMotion() {
+            const toggleBtn = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+            if (toggleBtn && mobileMenu) {
+                toggleBtn.addEventListener('click', () => {
+                    const isHidden = mobileMenu.classList.contains('hidden');
+                    mobileMenu.classList.toggle('hidden', !isHidden);
+                    mobileMenu.classList.toggle('flex', isHidden);
+                    toggleBtn.setAttribute('aria-expanded', String(isHidden));
+                });
+
+                mobileLinks.forEach((link) => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('flex');
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+
+            const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReducedMotion || typeof window.gsap === 'undefined' || typeof window.ScrollTrigger === 'undefined') {
+                return;
+            }
+
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.from('.hero-meta', { opacity: 0, y: 24, duration: 0.8, ease: 'power3.out', delay: 0.1 });
+            gsap.from('.hero-title', { opacity: 0, y: 48, duration: 0.9, ease: 'power3.out', delay: 0.2 });
+            gsap.from('.hero-desc', { opacity: 0, y: 32, duration: 0.9, ease: 'power3.out', delay: 0.35 });
+            gsap.from('.hero-sub', { opacity: 0, y: 28, duration: 0.9, ease: 'power3.out', delay: 0.45 });
+            gsap.from('.hero-actions', { opacity: 0, y: 24, duration: 0.8, ease: 'power3.out', delay: 0.55 });
+
+            document.querySelectorAll('.gsap-reveal').forEach((el) => {
+                gsap.from(el, {
+                    opacity: 0,
+                    y: 48,
+                    duration: 0.9,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 88%',
+                        once: true
+                    }
+                });
+            });
+        })();
+    </script>
+
+    <!-- Parallax Geometry: Central Bivariate Normal 3D Surface (with 2D Fallback) -->
+    <script type="module">
+        const canvas = document.getElementById('canvas');
+        let scrollY = 0;
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        if (typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+            ScrollTrigger.create({
+                trigger: 'body',
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: true,
+                onUpdate: (self) => {
+                    scrollY = self.progress;
+                }
+            });
+        } else {
+            window.addEventListener('scroll', () => {
+                const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+                scrollY = window.scrollY / max;
+            }, { passive: true });
+        }
+
+        function bivariateNormalHeight(x, z, sigmaX, sigmaZ, rho, amplitude) {
+            const nx = x / sigmaX;
+            const nz = z / sigmaZ;
+            const exponent = -0.5 / (1 - rho * rho) * (nx * nx - 2 * rho * nx * nz + nz * nz);
+            return amplitude * Math.exp(exponent);
+        }
+
+        function start2DFallback() {
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            let w = (canvas.width = window.innerWidth);
+            let h = (canvas.height = window.innerHeight);
+            const N = 46;
+            const span = 56;
+            const sigmaX = 4.6;
+            const sigmaZ = 2.8;
+            const rho = 0.48;
+            const amplitude = 8.4;
+
+            window.addEventListener('resize', () => {
+                w = canvas.width = window.innerWidth;
+                h = canvas.height = window.innerHeight;
+            });
+
+            let angle = 0.35;
+            function draw() {
+                requestAnimationFrame(draw);
+                ctx.fillStyle = '#0a0a0a';
+                ctx.fillRect(0, 0, w, h);
+
+                angle += 0.0028;
+                const yaw = angle + mouseX * 0.18 + scrollY * 0.9;
+                const tilt = 0.34 + mouseY * 0.05 + scrollY * 0.06;
+                const cosY = Math.cos(yaw);
+                const sinY = Math.sin(yaw);
+                const cosT = Math.cos(tilt);
+                const sinT = Math.sin(tilt);
+                const fov = Math.min(w, h) * 1.15;
+                const camDist = w < 768 ? 24 : 17;
+
+                const proj = Array.from({ length: N + 1 }, () => new Array(N + 1));
+                for (let i = 0; i <= N; i++) {
+                    const x0 = -span / 2 + (i / N) * span;
+                    for (let j = 0; j <= N; j++) {
+                        const z0 = -span / 2 + (j / N) * span;
+                        const y0 = bivariateNormalHeight(x0, z0, sigmaX, sigmaZ, rho, amplitude) - 2.6;
+                        // Rotate strictly around density axis (Y)
+                        const xr = x0 * cosY - z0 * sinY;
+                        const zr = x0 * sinY + z0 * cosY;
+                        // Slight tilt on density axis to reveal tail & positive mound
+                        const yt = y0 * cosT - zr * sinT;
+                        const zt = y0 * sinT + zr * cosT + camDist;
+                        if (zt > 1.2) {
+                            proj[i][j] = [w / 2 + (xr / zt) * fov, h / 2 - (yt / zt) * fov];
+                        } else {
+                            proj[i][j] = null;
+                        }
+                    }
+                }
+
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.36)';
+                ctx.lineWidth = 0.9;
+                ctx.beginPath();
+                for (let i = 0; i <= N; i++) {
+                    for (let j = 0; j < N; j++) {
+                        const a = proj[i][j];
+                        const b = proj[i][j + 1];
+                        if (a && b) {
+                            ctx.moveTo(a[0], a[1]);
+                            ctx.lineTo(b[0], b[1]);
+                        }
+                    }
+                }
+                for (let j = 0; j <= N; j++) {
+                    for (let i = 0; i < N; i++) {
+                        const a = proj[i][j];
+                        const b = proj[i + 1][j];
+                        if (a && b) {
+                            ctx.moveTo(a[0], a[1]);
+                            ctx.lineTo(b[0], b[1]);
+                        }
+                    }
+                }
+                ctx.stroke();
+            }
+            draw();
+        }
+
+        try {
+            const THREE = await import('https://esm.sh/three@0.160.0');
+            const scene = new THREE.Scene();
+            scene.fog = new THREE.Fog(0x0a0a0a, 18, 44);
+            const camera = new THREE.PerspectiveCamera(52, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+            renderer.setClearColor(0x0a0a0a, 1);
+
+            function updateCameraPosition() {
+                const aspect = window.innerWidth / window.innerHeight;
+                camera.position.set(0, 1.8, aspect < 1 ? 24.5 : 17.5);
+                camera.lookAt(0, 0.1, 0);
+            }
+            updateCameraPosition();
+
+            // Parent group applies slight tilt along f(X,Y) so the tail plane and positive peak are clearly visible
+            const surfaceGroup = new THREE.Group();
+            surfaceGroup.position.set(0, -2.7, -1.5);
+            surfaceGroup.rotation.x = 0.38;
+            scene.add(surfaceGroup);
+
+            // Extended horizontal plane (X, Y) with non-linear sampling for a smooth peak and wide tail
+            const segments = 76;
+            const halfExtent = 44;
+            const geometry = new THREE.PlaneGeometry(2, 2, segments, segments);
+            geometry.rotateX(-Math.PI / 2);
+
+            const posAttr = geometry.attributes.position;
+            const sigmaX = 4.6;
+            const sigmaZ = 2.8;
+            const rho = 0.48;
+            const amplitude = 8.4;
+
+            function mapCoord(u) {
+                return Math.sign(u) * halfExtent * (0.28 * Math.abs(u) + 0.72 * Math.pow(Math.abs(u), 1.85));
+            }
+
+            for (let i = 0; i < posAttr.count; i++) {
+                const u = posAttr.getX(i);
+                const v = posAttr.getZ(i);
+                const x = mapCoord(u);
+                const z = mapCoord(v);
+                posAttr.setX(i, x);
+                posAttr.setZ(i, z);
+                const density = bivariateNormalHeight(x, z, sigmaX, sigmaZ, rho, amplitude);
+                posAttr.setY(i, density);
+            }
+            geometry.computeVertexNormals();
+
+            const material = new THREE.MeshBasicMaterial({
+                color: 0xffffff,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.40
+            });
+
+            const surfaceMesh = new THREE.Mesh(geometry, material);
+            surfaceMesh.rotation.y = 0.45;
+            surfaceGroup.add(surfaceMesh);
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                updateCameraPosition();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+
+            let baseYaw = 0.45;
+            let smoothMouseX = 0;
+            let smoothMouseY = 0;
+            let smoothScroll = 0;
+
+            function animate() {
+                requestAnimationFrame(animate);
+
+                smoothMouseX += (mouseX - smoothMouseX) * 0.04;
+                smoothMouseY += (mouseY - smoothMouseY) * 0.04;
+                smoothScroll += (scrollY - smoothScroll) * 0.06;
+
+                // Continuous gentle rotation exclusively around the density axis f(X, Y)
+                baseYaw += 0.0022;
+                surfaceMesh.rotation.y = baseYaw + smoothMouseX * 0.16 + smoothScroll * 0.85;
+
+                // Subtle, bounded tilt on the f(X,Y) axis keeping the positive mound upright
+                surfaceGroup.rotation.x = 0.38 + smoothMouseY * 0.045 + smoothScroll * 0.05;
+
+                renderer.render(scene, camera);
+            }
+            animate();
+        } catch (err) {
+            start2DFallback();
+        }
+    </script>
+</body>
+</html>
